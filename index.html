@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graduación de Melissa Mendieta</title>
+  <link rel="icon" href="https://images.vexels.com/media/users/3/166342/isolated/preview/6a46b3eea1b8b9bb4cab9a0c26dc2a74-icono-de-gorro-de-graduacion-iconos-de-graduacion.png" type="image/png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fancy: ['"Dancing Script"', 'cursive'],
+            body: ['"Poppins"', 'sans-serif']
+          },
+          colors: {
+            mainBlack: '#000000',
+            mainGold: '#a44f01',
+            mainRed: '#9d020c',
+            accentRed: '#d60b09',
+            accentDark: '#ae2000'
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle, #000000, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Dancing Script', cursive;
+    }
+    h1 {
+      font-size: 4rem;
+      color: #a44f01;
+    }
+    h2 {
+      font-size: 3rem;
+      color: #a44f01;
+    }
+    h3 {
+      font-size: 2.5rem;
+      color: #a44f01;
+    }
+    h4 {
+      font-size: 2rem;
+      color: #a44f01;
+    }
+    .section-divider {
+      background-image: linear-gradient(to right, #a44f01, #d60b09, #ae2000);
+      height: 6px;
+      width: 80%;
+      margin: 2rem auto;
+      border-radius: 10px;
+    }
+    .countdown span {
+      display: inline-block;
+      min-width: 50px;
+      background-color: #a44f01;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    canvas.fireworks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(#a44f01, #d60b09);
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px;
+    }
+    .timeline-item-left {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item-right {
+      left: 50%;
+    }
+    form input, form select, form textarea {
+      transition: all 0.3s ease;
+      padding: 12px;
+      border-radius: 8px;
+      background: #2e2e2e;
+      border: 1px solid #a44f01;
+      color: white;
+      font-size: 1rem;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+      outline: none;
+      border-color: #d60b09;
+      box-shadow: 0 0 5px #d60b09;
+    }
+    button[type="submit"] {
+      font-weight: 600;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      background: #a44f01;
+      color: black;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(to right, #d60b09, #ae2000);
+      transform: scale(1.05);
+    }
+
+    button[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+    /* Estilo para la sección de itinerario */
+    .timeline-item div {
+      background: #2e2e2e;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: 1px solid #a44f01;
+    }
+    .timeline-item div:hover {
+      background: #a44f01;
+    }
+
+    /* Estilo para la sección de preguntas frecuentes */
+    .faq-section {
+      background: #1a1a1a;
+      padding: 4rem 2rem;
+      color: #fff;
+    }
+    .faq-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
+      color: #a44f01;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    details {
+      background: #2e2e2e;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: 1px solid #a44f01;
+    }
+    details[open] {
+      background: #a44f01;
+    }
+    details summary {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    details p {
+      padding: 10px 0;
+      font-size: 1rem;
+      color: #d1d1d1;
+    }
+
+    /* Estilo para el contador */
+  .countdown-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .countdown-item {
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    color: ae2000; /* Gold color */
+    font-size: 3rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .countdown-item:hover {
+    background-color: #3e3e3e;
+    transform: scale(1.1);
+  }
+
+  /* Agregar efectos de texto */
+  .countdown-item span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #a44f01; /* Lighter gold */
+  }
+
+  /* Animación de FadeIn */
+  .animate__fadeIn {
+    animation: fadeIn 1s ease-out;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  ::placeholder {
+  color: #bbb;
+  opacity: 0.8;
+}
+
+  </style>
+</head>
+<body>
+  <canvas class="fireworks"></canvas>
+
+  <header class="text-center py-12 px-6 bg-mainBlack text-white">
+    <h1 class="text-6xl font-fancy text-mainGold mb-4 animate__animated animate__fadeIn animate__delay-1s">
+      Graduación de Melissa Mendieta
+    </h1>
+    <p class="text-2xl font-semibold text-mainRed mb-4 tracking-wide leading-relaxed">
+      29 de Junio de 2025 · 6:00 PM
+    </p>
+    <div class="countdown-container flex justify-center space-x-4 items-center text-2xl font-bold text-mainGold mb-6 animate__animated animate__pulse animate__infinite" id="countdown">
+      <!-- Aquí se generarán los números del contador -->
+    </div>
+    <p class="text-xl text-gray-300 mt-4">
+      ¡La cuenta atrás ha comenzado! ¡Nos vemos pronto!
+    </p>
+  </header>
+  
+
+  <section class="text-center py-10 px-6">
+    <h2 class="faq-title">Con todo cariño</h2>
+    <p class="text-lg max-w-2xl mx-auto">Quiero invitarlos a todos a cerrar esta etapa de mi vida y dar inicio a una nueva.</p>
+  </section>
+  
+  <div class="section-divider"></div>
+
+  <section class="px-6 py-10 relative">
+    <h2 class="faq-title">Itinerario</h2>
+    <div class="relative timeline mx-auto max-w-4xl">
+      <div class="timeline-item timeline-item-left">
+        <div class="p-4 rounded-xl inline-block">6:00 PM - Inicio del evento y fotos</div>
+      </div>
+      <div class="timeline-item timeline-item-right">
+        <div class="p-4 rounded-xl inline-block">7:00 PM - Baile</div>
+      </div>
+      <div class="timeline-item timeline-item-left">
+        <div class="p-4 rounded-xl inline-block">8:00 PM - Cena</div>
+      </div>
+      <div class="timeline-item timeline-item-right">
+        <div class="p-4 rounded-xl inline-block">9:00 - 11:00 PM - Baile</div>
+      </div>
+      <div class="timeline-item timeline-item-left">
+        <div class="p-4 rounded-xl inline-block">11:30 PM Fin del evento</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Preguntas Frecuentes -->
+  <section class="faq-section">
+    <h2 class="faq-title">Preguntas Frecuentes</h2>
+    <div class="max-w-2xl mx-auto text-left">
+      <details>
+        <summary>¿Pueden asistir niños?</summary>
+        <p>El evento es solo para mayores de 5 años.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si no puedo asistir?</summary>
+        <p>Por favor notifícalo en el mismo formulario de confirmación. Los pases son intransferibles.</p>
+      </details>
+      <details>
+        <summary>¿Cómo confirmo mi asistencia?</summary>
+        <p>Desde esta página puedes llenar el formulario de confirmación.</p>
+      </details>
+      <details>
+        <summary>¿Hay código de vestimenta?</summary>
+        <p>Sí, formal / de etiqueta.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Confirmación de Asistencia -->
+  <section class="px-6 py-10 text-center bg-gradient-to-r from-mainBlack via-darkBlue to-mainBlack rounded-xl">
+    <div class="bg-cover bg-center bg-fixed h-full" ">
+      <h2 class="text-4xl text-mainGold mb-8 font-semibold tracking-wide">Confirmación de Asistencia</h2>
+      <form action="https://formsubmit.co/mxcontactomendieta@gmail.com" method="POST" class="max-w-xl mx-auto space-y-6 bg-opacity-70 bg-mainBlack p-6 rounded-xl shadow-2xl border-2 border-mainGold">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://previews.123rf.com/images/ksyusham/ksyusham2210/ksyusham221000010/194618392-gracias-d%C3%ADa-gato-color-doodle-inc-ilustraci%C3%B3n-vector.jpg">
+        
+        <!-- Campo de Nombre -->
+        <input type="text" name="Nombre" placeholder="Tu nombre" required class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack">
+        
+        <!-- Campo de numero de invitados confirmados -->
+        <input type="number" name="Invitados" placeholder="Número de invitados confirmados" required class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack">
+        
+        <!-- Campo de Asistencia -->
+        <select name="Asistencia" required class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack">
+          <option value="Asistiré">Asistiré</option>
+          <option value="No podré asistir">No podré asistir</option>
+        </select>
+        
+        <!-- Mensaje Opcional -->
+        <textarea name="Mensaje" placeholder="¿Quieres dejar un mensaje para Melissa? (opcional)" class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack"></textarea>
+        
+        <!-- Botón de Enviar -->
+        <button type="submit" class="w-full py-3 px-6 bg-mainGold text-black text-lg font-bold rounded-lg transform transition duration-500 ease-in-out hover:bg-accentRed hover:scale-105 hover:shadow-lg">
+          Confirmar Asistencia
+        </button>
+      </form>
+    </div>
+  </section>
+  
+
+  <div class="section-divider"></div>
+
+  <section class="px-6 py-10 text-center rounded-2xl shadow-2xl max-w-2xl mx-auto animate__animated animate__fadeIn bg-cover bg-center" style="background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');">
+    <h2 class="text-2xl font-bold text-white mb-4 leading-tight font-[LibreBaskerville] drop-shadow-md">
+      Mesa de regalos
+    </h2>
+    <div class="flex justify-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/9046/9046843.png" alt="Sobre para regalo en efectivo" class="w-24 h-24 drop-shadow-md">
+    </div>
+  </section>
+  
+
+
+
+  <div class="section-divider"></div>
+
+  <section class="px-6 py-10 text-center bg-mainBlack text-white">
+    <h2 class="text-3xl text-mainGold mb-6">Ubicación</h2>
+    <p class="text-lg mb-6">El evento se llevará a cabo en el siguiente lugar:</p>
+    <iframe class="w-full h-64 rounded-xl shadow-lg border-4 border-mainGold mb-6" 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.766469166031!2d-100.26236138881411!3d25.712155010555854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662eacd3416ecb1%3A0x3a6bf020966b212d!2sHema%20Eventos!5e0!3m2!1ses!2smx!4v1745434881096!5m2!1ses!2smx"
+     wwidth="100%" 
+     height="300" 
+     style="border-radius: 10px;" 
+     allowfullscreen="" 
+     loading="lazy"></iframe>
+    <p class="text-lg">Avenida Félix Galván, Av Fidel Velázquez 520b, San Nicolás de los Garza, N.L.</p>
+  </section>
+  
+  
+  
+  
+
+  <footer class="bg-mainBlack text-center py-6 text-white">
+    <p>&copy; 2025 Todos los derechos reservados.</p>
+    <p>Diseñado con ❤️ por Esme c:</p>
+  </footer>
+
+  <script>
+    // Fecha de la graduación
+    const graduationDate = new Date("June 29, 2025 18:00:00").getTime();
+    
+    // Actualiza el contador cada segundo
+    const countdownFunction = setInterval(function() {
+    
+      // Obtiene la fecha y hora actuales
+      const now = new Date().getTime();
+    
+      // Calcula la diferencia entre la fecha de la graduación y ahora
+      const distance = graduationDate - now;
+    
+      // Calcula los días, horas, minutos y segundos
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+      // Muestra el contador
+      document.getElementById("countdown").innerHTML =
+        `<div class="countdown-item">${days} <span>Días</span></div>` +
+        `<div class="countdown-item">${hours} <span>Horas</span></div>` +
+        `<div class="countdown-item">${minutes} <span>Minutos</span></div>` +
+        `<div class="countdown-item">${seconds} <span>Segundos</span></div>`;
+    
+      // Si la cuenta atrás ha terminado
+      if (distance < 0) {
+  clearInterval(countdownFunction);
+  document.getElementById("countdown").innerHTML = "<div class='text-2xl font-bold text-mainRed'>¡Ya comenzó el evento!</div>";
+}
+
+    }, 1000);
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  // Dispara fuegos artificiales al cargar la página
+  window.addEventListener('load', () => {
+    confetti({
+      particleCount: 200,
+      spread: 120,
+      origin: { y: 0.6 }
+    });
+  });
+</script>
+</body>
+</html>
