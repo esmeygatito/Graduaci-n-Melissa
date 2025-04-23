@@ -190,23 +190,29 @@
 
     /* Estilo para el contador */
   .countdown-container {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 1rem;
+  max-width: 50%;
+  margin: 0 auto;
+}
 
   .countdown-item {
-    padding: 20px;
-    background-color: #1a1a1a;
-    border-radius: 12px;
-    color: ae2000; /* Gold color */
-    font-size: 3rem;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
+  padding: 0,5rem;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  color: ae2000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .countdown-item span {
+        font-size: 1.2rem;
+        color: #a44f01; /* Lighter gold */
+    }
 
   .countdown-item:hover {
     background-color: #3e3e3e;
@@ -216,9 +222,10 @@
   /* Agregar efectos de texto */
   .countdown-item span {
     display: block;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: normal;
     color: #a44f01; /* Lighter gold */
+    text-align: center;
   }
 
   /* Animación de FadeIn */
@@ -247,7 +254,8 @@
     <p class="text-2xl font-semibold text-mainRed mb-4 tracking-wide leading-relaxed">
       29 de Junio de 2025 · 6:00 PM
     </p>
-    <div class="countdown-container flex justify-center space-x-4 items-center text-2xl font-bold text-mainGold mb-6 animate__animated animate__pulse animate__infinite" id="countdown">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-sm mx-auto text-lg sm:text-2xl font-bold text-mainGold mb-6" id="countdown">
+
       <!-- Aquí se generarán los números del contador -->
     </div>
     <p class="text-xl text-gray-300 mt-4">
@@ -279,7 +287,7 @@
         <div class="p-4 rounded-xl inline-block">9:00 - 11:00 PM - Baile</div>
       </div>
       <div class="timeline-item timeline-item-left">
-        <div class="p-4 rounded-xl inline-block">11:30 PM Fin del evento</div>
+        <div class="p-4 rounded-xl inline-block">11:30 PM - Fin del evento</div>
       </div>
     </div>
   </section>
