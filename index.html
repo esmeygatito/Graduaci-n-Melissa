@@ -1,439 +1,704 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graduación de Melissa Mendieta</title>
-  <link rel="icon" href="https://images.vexels.com/media/users/3/166342/isolated/preview/6a46b3eea1b8b9bb4cab9a0c26dc2a74-icono-de-gorro-de-graduacion-iconos-de-graduacion.png" type="image/png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            fancy: ['"Dancing Script"', 'cursive'],
-            body: ['"Poppins"', 'sans-serif']
-          },
-          colors: {
-            mainBlack: '#000000',
-            mainGold: '#a44f01',
-            mainRed: '#9d020c',
-            accentRed: '#d60b09',
-            accentDark: '#ae2000'
-          }
-        }
-      }
-    }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Boda de Valentina & Santiago</title>
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="La Boda de Valentina & Santiago">
+  <meta property="og:description" content="Únete a nosotros en nuestra boda el 25 de Octubre, 2025 en Hacienda San Gabriel, San Miguel de Allende, México.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=630&fit=crop">
+  <meta property="og:url" content="https://tu-sitio.com">
+  <meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle, #000000, #1a1a1a);
-      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FAFAF5;
+      color: #2C2C2C;
+      line-height: 1.6;
       overflow-x: hidden;
     }
     h1, h2, h3, h4 {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
     }
-    h1 {
-      font-size: 4rem;
-      color: #a44f01;
+    p {
+      font-weight: 300;
     }
-    h2 {
-      font-size: 3rem;
-      color: #a44f01;
-    }
-    h3 {
-      font-size: 2.5rem;
-      color: #a44f01;
-    }
-    h4 {
-      font-size: 2rem;
-      color: #a44f01;
-    }
-    .section-divider {
-      background-image: linear-gradient(to right, #a44f01, #d60b09, #ae2000);
-      height: 6px;
-      width: 80%;
-      margin: 2rem auto;
-      border-radius: 10px;
-    }
-    .countdown span {
-      display: inline-block;
-      min-width: 50px;
-      background-color: #a44f01;
-      padding: 10px;
-      margin: 5px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-    canvas.fireworks {
+    /* Pre-loader */
+    #preloader {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      background-color: #FAFAF5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease-out;
+    }
+    #preloader.hidden {
+      opacity: 0;
       pointer-events: none;
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #FAFAF5;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    /* Audio Player */
+    #audio-player {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      background-color: #C5A059;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    #audio-player.playing {
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    /* Sections */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #C5A059;
+    }
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .countdown-item {
+      text-align: center;
+      background-color: #FAFAF5;
+      border: 2px solid #C5A059;
+      border-radius: 10px;
+      padding: 1rem;
+      min-width: 80px;
+    }
+    .countdown-item span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2C2C2C;
+    }
+    .countdown-item small {
+      font-size: 0.8rem;
+      color: #C5A059;
+    }
+    /* Story */
+    .story {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .story-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .story-img {
+      flex: 1;
+      min-width: 300px;
+    }
+    .story-img img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      top: 0;
       left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: #C5A059;
       transform: translateX(-50%);
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(#a44f01, #d60b09);
     }
     .timeline-item {
       position: relative;
       width: 50%;
-      padding: 20px;
+      padding: 2rem 0;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
     }
-    .timeline-item-left {
+    .timeline-item:nth-child(odd) {
       left: 0;
       text-align: right;
+      padding-right: 2rem;
     }
-    .timeline-item-right {
+    .timeline-item:nth-child(even) {
       left: 50%;
+      text-align: left;
+      padding-left: 2rem;
     }
-    form input, form select, form textarea {
-      transition: all 0.3s ease;
-      padding: 12px;
-      border-radius: 8px;
-      background: #2e2e2e;
-      border: 1px solid #a44f01;
-      color: white;
-      font-size: 1rem;
+    .timeline-item:nth-child(1) { animation-delay: 0s; }
+    .timeline-item:nth-child(2) { animation-delay: 1s; }
+    .timeline-item:nth-child(3) { animation-delay: 2s; }
+    .timeline-item:nth-child(4) { animation-delay: 3s; }
+    .timeline-content {
+      background-color: #FAFAF5;
+      border: 1px solid #C5A059;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    form input:focus, form select:focus, form textarea:focus {
-      outline: none;
-      border-color: #d60b09;
-      box-shadow: 0 0 5px #d60b09;
+    .timeline-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
-    button[type="submit"] {
-      font-weight: 600;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      background: #a44f01;
-      color: black;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 8px;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 1rem;
+      transition: transform 0.3s ease;
     }
-    button[type="submit"]:hover {
-      background: linear-gradient(to right, #d60b09, #ae2000);
+    .gallery img:hover {
       transform: scale(1.05);
     }
-
-    button[type="submit"]:active {
-    transform: scale(0.95);
-}
-
-    /* Estilo para la sección de itinerario */
-    .timeline-item div {
-      background: #2e2e2e;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 8px;
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: #FAFAF5;
+      font-size: 2rem;
       cursor: pointer;
-      transition: background 0.3s ease;
-      border: 1px solid #a44f01;
     }
-    .timeline-item div:hover {
-      background: #a44f01;
+    /* Location */
+    .location-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
     }
-
-    /* Estilo para la sección de preguntas frecuentes */
-    .faq-section {
-      background: #1a1a1a;
-      padding: 4rem 2rem;
-      color: #fff;
+    .location-btn {
+      background-color: #C5A059;
+      color: #FAFAF5;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
     }
-    .faq-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.5rem;
-      color: #a44f01;
+    .location-btn:hover {
+      background-color: #A09050;
+    }
+    /* Dress Code */
+    .dress-code {
       text-align: center;
-      margin-bottom: 2rem;
     }
-    details {
-      background: #2e2e2e;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 8px;
+    .color-swatches {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .swatch {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #C5A059;
+    }
+    /* Note */
+    .note {
+      background-color: #F5F5F0;
+      border-left: 5px solid #C5A059;
+      padding: 1rem;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+    /* Gift */
+    .gift {
+      text-align: center;
+    }
+    .copy-btn {
+      background-color: #C5A059;
+      color: #FAFAF5;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s ease;
-      border: 1px solid #a44f01;
+      margin-left: 1rem;
+      transition: background-color 0.3s ease;
     }
-    details[open] {
-      background: #a44f01;
+    .copy-btn:hover {
+      background-color: #A09050;
     }
-    details summary {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #fff;
+    .tooltip {
+      position: relative;
+      display: inline-block;
     }
-    details p {
-      padding: 10px 0;
-      font-size: 1rem;
-      color: #d1d1d1;
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: #C5A059;
+      color: #FAFAF5;
+      text-align: center;
+      border-radius: 5px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-
-    /* Estilo para el contador */
-  .countdown-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: 1rem;
-  max-width: 50%;
-  margin: 0 auto;
-}
-
-  .countdown-item {
-  padding: 0,5rem;
-  background-color: #1a1a1a;
-  border-radius: 12px;
-  color: ae2000;
-  font-size: 1.5rem;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-    .countdown-item span {
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    /* Calendar */
+    .calendar-btn {
+      background-color: #C5A059;
+      color: #FAFAF5;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    .calendar-btn:hover {
+      background-color: #A09050;
+    }
+    /* RSVP */
+    .rsvp-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #FAFAF5;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #C5A059;
+      border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .rsvp-form button {
+      background-color: #C5A059;
+      color: #FAFAF5;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+    .rsvp-form button:hover {
+      background-color: #A09050;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
         font-size: 1.2rem;
-        color: #a44f01; /* Lighter gold */
+      }
+      .timeline::before {
+        left: 10px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 2rem;
+        text-align: left;
+      }
+      .timeline-item:nth-child(odd) {
+        padding-left: 2rem;
+      }
+      .timeline-item:nth-child(even) {
+        padding-left: 2rem;
+      }
+      .story {
+        flex-direction: column;
+      }
+      .color-swatches {
+        flex-wrap: wrap;
+      }
     }
-
-  .countdown-item:hover {
-    background-color: #3e3e3e;
-    transform: scale(1.1);
-  }
-
-  /* Agregar efectos de texto */
-  .countdown-item span {
-    display: block;
-    font-size: 1rem;
-    font-weight: normal;
-    color: #a44f01; /* Lighter gold */
-    text-align: center;
-  }
-
-  /* Animación de FadeIn */
-  .animate__fadeIn {
-    animation: fadeIn 1s ease-out;
-  }
-
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  ::placeholder {
-  color: #bbb;
-  opacity: 0.8;
-}
-
   </style>
 </head>
 <body>
-  <canvas class="fireworks"></canvas>
+  <!-- Pre-loader -->
+  <div id="preloader">
+    <h1 class="pulse" style="font-size: 4rem; color: #C5A059;">V&S</h1>
+  </div>
 
-  <header class="text-center py-12 px-6 bg-mainBlack text-white">
-    <h1 class="text-6xl font-fancy text-mainGold mb-4 animate__animated animate__fadeIn animate__delay-1s">
-      Graduación de Melissa Mendieta
-    </h1>
-    <p class="text-2xl font-semibold text-mainRed mb-4 tracking-wide leading-relaxed">
-      29 de Junio de 2025 · 6:00 PM
-    </p>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-sm mx-auto text-lg sm:text-2xl font-bold text-mainGold mb-6" id="countdown">
-
-      <!-- Aquí se generarán los números del contador -->
-    </div>
-    <p class="text-xl text-gray-300 mt-4">
-      ¡La cuenta atrás ha comenzado! ¡Nos vemos pronto!
-    </p>
-  </header>
-  
-
-  <section class="text-center py-10 px-6">
-    <h2 class="faq-title">Con todo cariño</h2>
-    <p class="text-lg max-w-2xl mx-auto">Quiero invitarlos a todos a cerrar esta etapa de mi vida y dar inicio a una nueva.</p>
-  </section>
-  
-  <div class="section-divider"></div>
-
-  <section class="px-6 py-10 relative">
-    <h2 class="faq-title">Itinerario</h2>
-    <div class="relative timeline mx-auto max-w-4xl">
-      <div class="timeline-item timeline-item-left">
-        <div class="p-4 rounded-xl inline-block">6:00 PM - Inicio del evento y fotos</div>
-      </div>
-      <div class="timeline-item timeline-item-right">
-        <div class="p-4 rounded-xl inline-block">7:00 PM - Baile</div>
-      </div>
-      <div class="timeline-item timeline-item-left">
-        <div class="p-4 rounded-xl inline-block">8:00 PM - Cena</div>
-      </div>
-      <div class="timeline-item timeline-item-right">
-        <div class="p-4 rounded-xl inline-block">9:00 - 11:00 PM - Baile</div>
-      </div>
-      <div class="timeline-item timeline-item-left">
-        <div class="p-4 rounded-xl inline-block">11:30 PM - Fin del evento</div>
-      </div>
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-up" data-aos-duration="2000">
+    <div class="hero-content">
+      <h1>Valentina & Santiago</h1>
+      <p>25 de Octubre, 2025</p>
+      <p>Hacienda San Gabriel, San Miguel de Allende, México</p>
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <!-- Audio Player -->
+  <div id="audio-player" onclick="toggleAudio()">
+    <span id="play-icon">▶️</span>
+  </div>
+  <audio id="wedding-audio" loop>
+    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav"> <!-- Placeholder, replace with actual wedding music URL -->
+  </audio>
 
-  <!-- Preguntas Frecuentes -->
-  <section class="faq-section">
-    <h2 class="faq-title">Preguntas Frecuentes</h2>
-    <div class="max-w-2xl mx-auto text-left">
-      <details>
-        <summary>¿Pueden asistir niños?</summary>
-        <p>El evento es solo para mayores de 5 años.</p>
-      </details>
-      <details>
-        <summary>¿Qué pasa si no puedo asistir?</summary>
-        <p>Por favor notifícalo en el mismo formulario de confirmación. Los pases son intransferibles.</p>
-      </details>
-      <details>
-        <summary>¿Cómo confirmo mi asistencia?</summary>
-        <p>Desde esta página puedes llenar el formulario de confirmación.</p>
-      </details>
-      <details>
-        <summary>¿Hay código de vestimenta?</summary>
-        <p>Sí, formal / de etiqueta.</p>
-      </details>
+  <!-- Countdown -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Cuenta Regresiva</h2>
+    <div class="countdown" id="countdown">
+      <!-- JS will populate -->
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- Confirmación de Asistencia -->
-  <section class="px-6 py-10 text-center bg-gradient-to-r from-mainBlack via-darkBlue to-mainBlack rounded-xl">
-    <div class="bg-cover bg-center bg-fixed h-full" ">
-      <h2 class="text-4xl text-mainGold mb-8 font-semibold tracking-wide">Confirmación de Asistencia</h2>
-      <form action="https://formsubmit.co/mxcontactomendieta@gmail.com" method="POST" class="max-w-xl mx-auto space-y-6 bg-opacity-70 bg-mainBlack p-6 rounded-xl shadow-2xl border-2 border-mainGold">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://previews.123rf.com/images/ksyusham/ksyusham2210/ksyusham221000010/194618392-gracias-d%C3%ADa-gato-color-doodle-inc-ilustraci%C3%B3n-vector.jpg">
-        
-        <!-- Campo de Nombre -->
-        <input type="text" name="Nombre" placeholder="Tu nombre" required class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack">
-        
-        <!-- Campo de numero de invitados confirmados -->
-        <input type="number" name="Invitados" placeholder="Número de invitados confirmados" required class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack">
-        
-        <!-- Campo de Asistencia -->
-        <select name="Asistencia" required class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack">
-          <option value="Asistiré">Asistiré</option>
-          <option value="No podré asistir">No podré asistir</option>
-        </select>
-        
-        <!-- Mensaje Opcional -->
-        <textarea name="Mensaje" placeholder="¿Quieres dejar un mensaje para Melissa? (opcional)" class="w-full p-4 rounded-lg bg-transparent border-2 border-mainGold text-white font-body text-lg focus:outline-none focus:ring-2 focus:ring-mainGold transition-all duration-300 ease-in-out hover:bg-mainBlack"></textarea>
-        
-        <!-- Botón de Enviar -->
-        <button type="submit" class="w-full py-3 px-6 bg-mainGold text-black text-lg font-bold rounded-lg transform transition duration-500 ease-in-out hover:bg-accentRed hover:scale-105 hover:shadow-lg">
-          Confirmar Asistencia
-        </button>
-      </form>
+  <!-- Our Story -->
+  <section class="story" data-aos="fade-up" data-aos-duration="2000">
+    <div class="story-text">
+      <h2 class="section-title">Nuestra Historia</h2>
+      <p>Lo que comenzó con un café casual en la Roma, se convirtió en 5 años de viajes, risas y momentos inolvidables. Ahora, estamos listos para dar el siguiente paso juntos.</p>
+    </div>
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&h=400&fit=crop" alt="Valentina y Santiago">
     </div>
   </section>
-  
 
-  <div class="section-divider"></div>
-
-  <section class="px-6 py-10 text-center rounded-2xl shadow-2xl max-w-2xl mx-auto animate__animated animate__fadeIn bg-cover bg-center" style="background-image: url('https://www.transparenttextures.com/patterns/black-linen.png');">
-    <h2 class="text-2xl font-bold text-white mb-4 leading-tight font-[LibreBaskerville] drop-shadow-md">
-      Mesa de regalos
-    </h2>
-    <div class="flex justify-center">
-      <img src="https://cdn-icons-png.flaticon.com/512/9046/9046843.png" alt="Sobre para regalo en efectivo" class="w-24 h-24 drop-shadow-md">
+  <!-- Timeline -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">El Gran Día</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-icon">💒</div>
+          <h3>4:00 PM - Ceremonia Religiosa</h3>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-icon">🍸</div>
+          <h3>5:30 PM - Cóctel</h3>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-icon">🍽️</div>
+          <h3>7:00 PM - Cena</h3>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-icon">🎶</div>
+          <h3>9:00 PM - Fiesta</h3>
+        </div>
+      </div>
     </div>
   </section>
-  
 
-
-
-  <div class="section-divider"></div>
-
-  <section class="px-6 py-10 text-center bg-mainBlack text-white">
-    <h2 class="text-3xl text-mainGold mb-6">Ubicación</h2>
-    <p class="text-lg mb-6">El evento se llevará a cabo en el siguiente lugar:</p>
-    <iframe class="w-full h-64 rounded-xl shadow-lg border-4 border-mainGold mb-6" 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.766469166031!2d-100.26236138881411!3d25.712155010555854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662eacd3416ecb1%3A0x3a6bf020966b212d!2sHema%20Eventos!5e0!3m2!1ses!2smx!4v1745434881096!5m2!1ses!2smx"
-     wwidth="100%" 
-     height="300" 
-     style="border-radius: 10px;" 
-     allowfullscreen="" 
-     loading="lazy"></iframe>
-    <p class="text-lg">Avenida Félix Galván, Av Fidel Velázquez 520b, San Nicolás de los Garza, N.L.</p>
+  <!-- Gallery -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Galería</h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop" alt="Foto 1" onclick="openLightbox(this.src)">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop" alt="Foto 2" onclick="openLightbox(this.src)">
+      <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=400&h=300&fit=crop" alt="Foto 3" onclick="openLightbox(this.src)">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop" alt="Foto 4" onclick="openLightbox(this.src)">
+    </div>
   </section>
-  
-  
-  
-  
 
-  <footer class="bg-mainBlack text-center py-6 text-white">
-    <p>&copy; 2025 Todos los derechos reservados.</p>
-    <p>Diseñado con ❤️ por Esme c:</p>
-  </footer>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- Location -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Ubicación</h2>
+    <p>Hacienda San Gabriel, San Miguel de Allende, México</p>
+    <div class="location-buttons">
+      <a href="https://waze.com/ul?q=Hacienda%20San%20Gabriel%20San%20Miguel%20de%20Allende" class="location-btn">Abrir en Waze</a>
+      <a href="https://maps.google.com/?q=Hacienda+San+Gabriel+San+Miguel+de+Allende" class="location-btn">Abrir en Google Maps</a>
+    </div>
+  </section>
+
+  <!-- Dress Code -->
+  <section class="dress-code" data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Código de Vestimenta</h2>
+    <p>Etiqueta Rigurosa (Black Tie)</p>
+    <div class="color-swatches">
+      <div class="swatch" style="background-color: #000000;"></div>
+      <div class="swatch" style="background-color: #FFFFFF;"></div>
+      <div class="swatch" style="background-color: #C5A059;"></div>
+      <div class="swatch" style="background-color: #2C2C2C;"></div>
+    </div>
+  </section>
+
+  <!-- Important Note -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <div class="note">
+      <p>👶 Amamos a sus pequeños, pero hemos reservado este día solo para adultos.</p>
+    </div>
+  </section>
+
+  <!-- Gift Table -->
+  <section class="gift" data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Mesa de Regalos</h2>
+    <p>Cuenta: 1234567890<br>Banco: Ejemplo<br>CLABE: 012345678901234567</p>
+    <div class="tooltip">
+      <button class="copy-btn" onclick="copyCLABE()">Copiar CLABE</button>
+      <span class="tooltiptext" id="tooltip">Copiado!</span>
+    </div>
+  </section>
+
+  <!-- Add to Calendar -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Añadir al Calendario</h2>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda%20de%20Valentina%20y%20Santiago&dates=20251025T160000Z/20251026T020000Z&details=Ceremonia%20y%20fiesta&location=Hacienda%20San%20Gabriel%2C%20San%20Miguel%20de%20Allende%2C%20M%C3%A9xico" class="calendar-btn">Google Calendar</a>
+    <a href="#" onclick="downloadICS()" class="calendar-btn">Apple/Outlook (.ics)</a>
+  </section>
+
+  <!-- RSVP -->
+  <section data-aos="fade-up" data-aos-duration="2000">
+    <h2 class="section-title">Confirma tu Asistencia</h2>
+    <form class="rsvp-form" onsubmit="handleRSVP(event)">
+      <input type="text" name="name" placeholder="Tu Nombre" required>
+      <input type="email" name="email" placeholder="Tu Email" required>
+      <select name="attendance" required>
+        <option value="">¿Asistirás?</option>
+        <option value="yes">Sí, asistiré</option>
+        <option value="no">No podré asistir</option>
+      </select>
+      <textarea name="message" placeholder="Mensaje opcional"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
   <script>
-    // Fecha de la graduación
-    const graduationDate = new Date("June 29, 2025 18:00:00").getTime();
-    
-    // Actualiza el contador cada segundo
-    const countdownFunction = setInterval(function() {
-    
-      // Obtiene la fecha y hora actuales
+    // Initialize AOS
+    AOS.init();
+
+    // Pre-loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 2000);
+    });
+
+    // Countdown
+    const weddingDate = new Date('October 25, 2025 16:00:00').getTime();
+    function updateCountdown() {
       const now = new Date().getTime();
-    
-      // Calcula la diferencia entre la fecha de la graduación y ahora
-      const distance = graduationDate - now;
-    
-      // Calcula los días, horas, minutos y segundos
+      const distance = weddingDate - now;
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-      // Muestra el contador
-      document.getElementById("countdown").innerHTML =
-        `<div class="countdown-item">${days} <span>Días</span></div>` +
-        `<div class="countdown-item">${hours} <span>Horas</span></div>` +
-        `<div class="countdown-item">${minutes} <span>Minutos</span></div>` +
-        `<div class="countdown-item">${seconds} <span>Segundos</span></div>`;
-    
-      // Si la cuenta atrás ha terminado
+      document.getElementById('countdown').innerHTML = `
+        <div class="countdown-item"><span>${days}</span><small>Días</small></div>
+        <div class="countdown-item"><span>${hours}</span><small>Horas</small></div>
+        <div class="countdown-item"><span>${minutes}</span><small>Min</small></div>
+        <div class="countdown-item"><span>${seconds}</span><small>Seg</small></div>
+      `;
       if (distance < 0) {
-  clearInterval(countdownFunction);
-  document.getElementById("countdown").innerHTML = "<div class='text-2xl font-bold text-mainRed'>¡Ya comenzó el evento!</div>";
-}
+        document.getElementById('countdown').innerHTML = '<p>¡El día ha llegado!</p>';
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    }, 1000);
+    // Audio Player
+    let audio = document.getElementById('wedding-audio');
+    let playIcon = document.getElementById('play-icon');
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        playIcon.textContent = '⏸️';
+        document.getElementById('audio-player').classList.add('playing');
+      } else {
+        audio.pause();
+        playIcon.textContent = '▶️';
+        document.getElementById('audio-player').classList.remove('playing');
+      }
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('show');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('show');
+    }
+
+    // Copy CLABE
+    function copyCLABE() {
+      navigator.clipboard.writeText('012345678901234567');
+      const tooltip = document.getElementById('tooltip');
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+      setTimeout(() => {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+      }, 2000);
+    }
+
+    // Download ICS
+    function downloadICS() {
+      const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Boda de Valentina y Santiago
+DTSTART:20251025T160000Z
+DTEND:20251026T020000Z
+LOCATION:Hacienda San Gabriel, San Miguel de Allende, México
+DESCRIPTION:Ceremonia y fiesta de boda
+END:VEVENT
+END:VCALENDAR`;
+      const blob = new Blob([icsContent], { type: 'text/calendar' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'boda-valentina-santiago.ics';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Handle RSVP
+    function handleRSVP(event) {
+      event.preventDefault();
+      alert('¡Gracias por confirmar! Te esperamos.');
+      // Here you could send data to a server
+    }
   </script>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>
-  // Dispara fuegos artificiales al cargar la página
-  window.addEventListener('load', () => {
-    confetti({
-      particleCount: 200,
-      spread: 120,
-      origin: { y: 0.6 }
-    });
-  });
-</script>
 </body>
 </html>
